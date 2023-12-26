@@ -5,7 +5,7 @@
 'use client'
 
 import { ResultsContext } from "@/contexts/results_context";
-import { Results } from "@/lib/results";
+import { Results, parseResults } from "@/lib/results";
 import { useEffect, useState, PropsWithChildren } from "react"
 
 type Props = {}
@@ -18,7 +18,7 @@ export default function ResultsLoader({ children }: PropsWithChildren<Props>) {
         fetch('/ipv6-in-real-life.json')
             .then((res) => res.json())
             .then((data) => {
-                setData(data);
+                setData(parseResults(data));
                 setLoading(false);
             })
     }, []);

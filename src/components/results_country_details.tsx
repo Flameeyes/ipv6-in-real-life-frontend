@@ -86,8 +86,13 @@ export default function ResultsCountryDetails({ countryCode }: Props) {
         return <></>;
     }
 
+    const countryResults = ipv6_in_real_life_results.get(countryCode);
+    if (!countryResults) {
+        return <></>;
+    }
+
     const categoryResults = Array.from(
-        Object.keys(ipv6_in_real_life_results.get(countryCode) || []),
+        countryResults.keys(),
         (category: string) => (
             <ResultsCategory
                 key={countryCode + category}

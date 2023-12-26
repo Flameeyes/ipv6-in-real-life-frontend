@@ -18,12 +18,21 @@ export interface Entry {
 
 export type Results = Map<string, Map<string, Array<Entry>>>
 
+export function parseResults(rawData: Object): Results {
+    return new Map(
+        Array.from(
+            Object.entries(rawData),
+            ([country, categories]) => [
+                country, new Map(Object.entries(categories))
+            ]));
+}
+
 export function summarizeCategory(category: Array<Entry>): SummarySpec {
     var total: number = 0;
     var withIpv6: number = 0;
     var invalid: number = 0;
 
-    category.forEach((entry) => {
+    for (const entry of category) {
         // Assume every entry is both valid and v6-compatible.
         // If any host is missing v4, it's invalid.
         // If any host is missing v6, it's not v6-compatible.
@@ -41,22 +50,22 @@ export function summarizeCategory(category: Array<Entry>): SummarySpec {
         } else if (has_ipv6) {
             withIpv6 = withIpv6 + 1;
         }
-    })
+    }
 
     return { total: total, withIpv6: withIpv6, invalid: invalid };
 }
 
-function summarizeMultipleCategories(categories: Array<Array<Entry>>): number {
+function summarizeMultipleCategories(categories: IterableIterator<Array<Entry>>): number {
     var total: number = 0;
     var withIpv6: number = 0;
     var invalid: number = 0;
 
-    categories.forEach((category) => {
+    for (const category of categories) {
         var res = summarizeCategory(category);
         total = total + res.total;
         withIpv6 = withIpv6 + res.withIpv6;
         invalid = invalid + res.invalid;
-    });
+    };
 
     return Math.floor((withIpv6 / (total - invalid)) * 100);
 }
@@ -66,16 +75,7 @@ export function summarizeCountry(data: Results, countryCode: string): number {
     if (!countryResults) {
         return 0;
     }
-    return summarizeMultipleCategories(Object.values(countryResults));
-}
-
-export function summarizeResults(data: object): Map<string, number> {
-    return new Map(Array.from(
-        Object.entries(data),
-        ([country, categories]) => {
-            return [country, summarizeMultipleCategories(Object.values(categories))];
-        }
-    ));
+    return summarizeMultipleCategories(countryResults.values());
 }
 
 export function describeCategory(category: string): string {
