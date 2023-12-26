@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 Diego Elio Pettenò
+#
+# SPDX-License-Identifier: 0BSD
+
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
@@ -5,6 +9,7 @@
 /.pnp
 .pnp.js
 .yarn/install-state.gz
+/venv/
 
 # testing
 /coverage
@@ -34,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Generated files
+/public/ipv6-in-real-life.json
