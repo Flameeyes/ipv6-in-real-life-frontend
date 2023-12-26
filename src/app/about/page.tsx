@@ -11,8 +11,9 @@ export default function About() {
         </h1>
 
         <div className="block">
-          Hello! My name is <a href="https://flameeyes.com/">Flameeyes</a>
-          and I have <a href="https://flameeyes.blog/tag/ipv6/">strong
+          Hello! My name is <a
+            href="https://flameeyes.com/">Flameeyes</a> and
+          I have <a href="https://flameeyes.blog/tag/ipv6/">strong
             opinions about IPv6</a>.
         </div>
 
@@ -26,8 +27,9 @@ export default function About() {
 
         <div className="block">
           Full disclosure here: both my <a href="https://www.facebook.com/ipv6/">
-            current</a> and <a href="https://www.google.com/ipv6/">previous</a>
-          employers are interested in IPv6 enough to have public trackers on
+            current</a> and <a
+              href="https://www.google.com/ipv6/">previous</a> employers
+          are interested in IPv6 enough to have public trackers on
           adoption, and this project is totally unrelated to both, measuring
           a completely different metric and <b>it is my personal opinion, not
             reflecting my employer&apos;s</b>.
