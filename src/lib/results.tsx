@@ -16,9 +16,7 @@ export interface Entry {
     additional_hosts: Array<Host>;
 }
 
-export interface Results {
-    [propKey: string]: Map<string, Array<Entry>>;
-}
+export type Results = Map<string, Map<string, Array<Entry>>>
 
 export function summarizeCategory(category: Array<Entry>): SummarySpec {
     var total: number = 0;
@@ -64,7 +62,11 @@ function summarizeMultipleCategories(categories: Array<Array<Entry>>): number {
 }
 
 export function summarizeCountry(data: Results, countryCode: string): number {
-    return summarizeMultipleCategories(Object.values(data[countryCode]));
+    const countryResults = data.get(countryCode);
+    if (!countryResults) {
+        return 0;
+    }
+    return summarizeMultipleCategories(Object.values(countryResults));
 }
 
 export function summarizeResults(data: object): Map<string, number> {

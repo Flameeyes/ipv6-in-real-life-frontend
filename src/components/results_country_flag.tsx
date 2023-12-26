@@ -14,12 +14,12 @@ type Props = {
 }
 
 export default function ResultsCountryFlag({ countryCode, onClick, isSelected }: Props) {
+    const ipv6_in_real_life_results = useContext(ResultsContext);
+
     // Ignore 'xx' code which is used for the test vectors.
     if (countryCode == 'xx') {
         return <></>
     }
-
-    const ipv6_in_real_life_results = useContext(ResultsContext);
 
     if (!ipv6_in_real_life_results) {
         return <></>;

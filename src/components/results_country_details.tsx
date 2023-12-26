@@ -35,17 +35,24 @@ function ResultsCategory({ countryCode, category }: CategoryProps) {
     const categoryName = describeCategory(category);
 
     const ipv6_in_real_life_results = useContext(ResultsContext);
+    const [expanded, setExpanded] = useState(false);
 
     if (!ipv6_in_real_life_results) {
         return <></>;
     }
 
-    const categoryResults = ipv6_in_real_life_results[countryCode][category];
+    const countryResults = ipv6_in_real_life_results.get(countryCode);
+    if (!countryResults) {
+        return <></>;
+    }
+
+    const categoryResults = countryResults.get(category);
+    if (!categoryResults) {
+        return <></>;
+    }
 
     const categorySummary = summarizeCategory(categoryResults);
     const ready = Math.floor((categorySummary.withIpv6 / categorySummary.total) * 100);
-
-    const [expanded, setExpanded] = useState(false);
 
     var results;
     if (expanded) {
@@ -68,18 +75,19 @@ function ResultsCategory({ countryCode, category }: CategoryProps) {
 }
 
 export default function ResultsCountryDetails({ countryCode }: Props) {
+    const ipv6_in_real_life_results = useContext(ResultsContext);
+
     // Ignore 'xx' code which is used for the test vectors.
     if (countryCode == "xx") {
         return <></>
     }
 
-    const ipv6_in_real_life_results = useContext(ResultsContext);
-
     if (!ipv6_in_real_life_results) {
         return <></>;
     }
 
-    const categoryResults = Array.from(Object.keys(ipv6_in_real_life_results[countryCode]),
+    const categoryResults = Array.from(
+        Object.keys(ipv6_in_real_life_results.get(countryCode) || []),
         (category: string) => (
             <ResultsCategory
                 key={countryCode + category}

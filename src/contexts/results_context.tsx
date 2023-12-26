@@ -7,4 +7,4 @@
 import { Results } from "@/lib/results";
 import { createContext } from "react";
 
-export const ResultsContext = createContext<undefined | Results>(undefined);
+export const ResultsContext = createContext<Results | undefined>(undefined);

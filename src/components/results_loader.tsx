@@ -5,12 +5,13 @@
 'use client'
 
 import { ResultsContext } from "@/contexts/results_context";
+import { Results } from "@/lib/results";
 import { useEffect, useState, PropsWithChildren } from "react"
 
 type Props = {}
 
 export default function ResultsLoader({ children }: PropsWithChildren<Props>) {
-    const [data, setData] = useState(null);
+    const [data, setData] = useState<Results | undefined>(undefined);
     const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
