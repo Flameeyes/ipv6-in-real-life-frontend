@@ -18,7 +18,7 @@ jobs:
           node-version: 20
       - run: npm ci
       - run: npm run build
-      - uses: actions/upload-artifact@v4
+      - run: tar -cvf ipv6-in-real-life-frontend.tar.xz --xz --transform 's|^out/|ipv6-in-real-life-frontend/|' out/
+      - uses: softprops/action-gh-release@v1
         with:
-          name: static-site
-          path: out/
+          path: ipv6-in-real-life-frontend.tar.xz
