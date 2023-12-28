@@ -11,8 +11,8 @@ import { lookup } from "country-data";
 
 function DetailsCategory(countryRowSpan: number | undefined, countryName: string | undefined, categoryName: string, entries: Array<Entry>) {
     var categoryRowSpan = 0;
-    for(const entry of entries) {
-        categoryRowSpan += (entry.additional_hosts.length +1);
+    for (const entry of entries) {
+        categoryRowSpan += (entry.additional_hosts.length + 1);
     }
 
     const rows = Array.from(entries, (entry, idx) => (
@@ -40,8 +40,8 @@ function DetailsCategory(countryRowSpan: number | undefined, countryName: string
 
 function DetailsCountry(countryCode: string, categories: Map<string, Array<Entry>>) {
     var rowSpan = 0;
-    for(const [_name, entries] of categories) {
-        for(const entry of entries) {
+    for (const [_name, entries] of categories) {
+        for (const entry of entries) {
             rowSpan += (entry.additional_hosts.length + 1);
         }
     }
@@ -80,7 +80,7 @@ export default function DetailsTable() {
             </thead>
             <tbody>
                 {Array.from(
-                    ipv6_in_real_life_results.entries(),
+                    ipv6_in_real_life_results.countriesData.entries(),
                     ([countryCode, categories]) => DetailsCountry(countryCode, categories))}
             </tbody>
         </table>

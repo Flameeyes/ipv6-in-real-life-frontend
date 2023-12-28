@@ -4,6 +4,7 @@
 
 import DetailsTable from "@/components/details_table";
 import ResultsLoader from "@/components/results_loader";
+import ResultsTimestamp from "@/components/results_timestamp";
 import { Suspense } from "react";
 
 export default function Details() {
@@ -15,6 +16,7 @@ export default function Details() {
                 <Suspense>
                     <ResultsLoader>
                         <DetailsTable />
+                        <ResultsTimestamp />
                     </ResultsLoader>
                 </Suspense>
             </div>

@@ -15,7 +15,7 @@ export default function ResultsLoader({ children }: PropsWithChildren<Props>) {
     const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('/ipv6-in-real-life.json')
+        fetch('/results/ipv6-in-real-life.json')
             .then((res) => res.json())
             .then((data) => {
                 setData(parseResults(data));

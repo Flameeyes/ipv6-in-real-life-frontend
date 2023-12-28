@@ -8,6 +8,7 @@ import { useState } from "react";
 import ResultsCountries from "@/components/results_countries";
 import ResultsCountryDetails from "@/components/results_country_details";
 import ResultsLoader from "@/components/results_loader";
+import ResultsTimestamp from "./results_timestamp";
 
 export default function Results() {
     const [selectedCountry, setSelectedCountry] = useState<string | undefined>(undefined);
@@ -18,6 +19,7 @@ export default function Results() {
                 <ResultsCountries selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry} />
                 {selectedCountry ? <ResultsCountryDetails countryCode={selectedCountry} /> : <></>}
             </div>
+            <ResultsTimestamp />
         </ResultsLoader>
     );
 }

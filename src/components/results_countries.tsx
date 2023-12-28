@@ -20,7 +20,7 @@ export default function ResultsCountries({ selectedCountry, setSelectedCountry }
         return <></>;
     }
 
-    const countryResults = Array.from(ipv6_in_real_life_results.keys(),
+    const countryResults = Array.from(ipv6_in_real_life_results.countriesData.keys(),
         (countryCode: string) => (
             <ResultsCountryFlag
                 key={countryCode}

@@ -16,15 +16,26 @@ export interface Entry {
     additional_hosts: Array<Host>;
 }
 
-export type Results = Map<string, Map<string, Array<Entry>>>
+type CountriesData = Map<string, Map<string, Array<Entry>>>;
 
-export function parseResults(rawData: Object): Results {
-    return new Map(
+export type Results = {
+    countriesData: CountriesData;
+    timestamp: number;
+}
+
+export interface RawData {
+    results: Object;
+    timestamp: number;
+}
+
+export function parseResults(rawData: RawData): Results {
+    const results: CountriesData = new Map(
         Array.from(
-            Object.entries(rawData),
+            Object.entries(rawData.results),
             ([country, categories]) => [
                 country, new Map(Object.entries(categories))
             ]));
+    return { countriesData: results, timestamp: rawData.timestamp }
 }
 
 export function summarizeCategory(category: Array<Entry>): SummarySpec {
@@ -71,7 +82,7 @@ function summarizeMultipleCategories(categories: IterableIterator<Array<Entry>>)
 }
 
 export function summarizeCountry(data: Results, countryCode: string): number {
-    const countryResults = data.get(countryCode);
+    const countryResults = data.countriesData.get(countryCode);
     if (!countryResults) {
         return 0;
     }

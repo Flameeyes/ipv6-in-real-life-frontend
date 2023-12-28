@@ -41,7 +41,7 @@ function ResultsCategory({ countryCode, category }: CategoryProps) {
         return <></>;
     }
 
-    const countryResults = ipv6_in_real_life_results.get(countryCode);
+    const countryResults = ipv6_in_real_life_results.countriesData.get(countryCode);
     if (!countryResults) {
         return <></>;
     }
@@ -86,7 +86,7 @@ export default function ResultsCountryDetails({ countryCode }: Props) {
         return <></>;
     }
 
-    const countryResults = ipv6_in_real_life_results.get(countryCode);
+    const countryResults = ipv6_in_real_life_results.countriesData.get(countryCode);
     if (!countryResults) {
         return <></>;
     }
