@@ -101,6 +101,8 @@ export function describeCategory(category: string): string {
             return "Banks and Finance";
         case "transport":
             return "Public Transport and Mass Transit";
+        case "medical":
+            return "Healthcare and Medical";
     }
 
     return category;
