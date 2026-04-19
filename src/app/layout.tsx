@@ -19,6 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <script src="/matomo-init.js" async />
         <Navbar />
         {children}
         <footer className="footer">
