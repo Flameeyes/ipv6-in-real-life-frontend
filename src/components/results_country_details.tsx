@@ -101,11 +101,13 @@ export default function ResultsCountryDetails({ countryCode }: Props) {
             />
         ));
 
-    const [country] = lookup.countries({ alpha2: countryCode.toUpperCase() });
+    const countryName = countryCode.toUpperCase() === 'ZZ'
+        ? 'Global Services'
+        : lookup.countries({ alpha2: countryCode.toUpperCase() })[0]?.name;
 
     return (
         <div className="column is-half">
-            <h2 className="title is-3">Detailed Results for {country.name}</h2>
+            <h2 className="title is-3">Detailed Results for {countryName}</h2>
             <table className="table is-striped">
                 <tbody>
                     {categoryResults}
