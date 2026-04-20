@@ -67,7 +67,7 @@ export default function About() {
 
         <div className="block">
           Being able to access a bank&apos;s website but not their online banking shouldn&apos;t
-          count as the bank having a valid IPv6 setup. Being able to see the supermarket's
+          count as the bank having a valid IPv6 setup. Being able to see the supermarket&apos;s
           offers but being unable to place an order shouldn&apos;t count as the supermarket
           having a valid IPv6 setup.
         </div>
@@ -85,7 +85,7 @@ export default function About() {
           can run on a phone that does not have an IPv4 address at all. Now, this does not mean
           that the server side needs to be reachable without IPv4, since DNS64 and NAT64 are
           acceptable ways to allow connectivity to IPv4 addresses from IPv6-only devices. But it
-          might very well be that companies that didn't provide an IPv6-native Web interface have
+          might very well be that companies that didn&apos;t provide an IPv6-native Web interface have
           implemented already an IPv6-native mobile app backend.
         </div>
       </div>

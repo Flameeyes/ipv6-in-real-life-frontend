@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { ResultsContext } from "@/contexts/results_context";
 import { summarizeCountry } from "@/lib/results";
 import Flag from 'react-world-flags'
+import Image from 'next/image'
 
 type Props = {
     countryCode: string;
@@ -33,7 +34,7 @@ export default function ResultsCountryFlag({ countryCode, onClick, isSelected }:
         <div className={className} onClick={onClick}>
             <div className='content has-text-centered'>
                 {countryCode === 'zz'
-                    ? <img src="/flags/zz.svg" style={{ height: '3em' }} alt="International" />
+                    ? <Image src="/flags/zz.svg" width={100} height={60} style={{ height: '3em', width: 'auto' }} alt="International" unoptimized />
                     : <Flag code={countryCode} fallback={<></>} style={{ height: '3em' }} />}
             </div>
             <div className='content has-text-centered'>
