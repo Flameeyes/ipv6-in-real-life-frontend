@@ -32,7 +32,9 @@ export default function ResultsCountryFlag({ countryCode, onClick, isSelected }:
     return (
         <div className={className} onClick={onClick}>
             <div className='content has-text-centered'>
-                <Flag code={countryCode} fallback={<></>} style={{ height: '3em' }} />
+                {countryCode === 'zz'
+                    ? <img src="/flags/zz.svg" style={{ height: '3em' }} alt="International" />
+                    : <Flag code={countryCode} fallback={<></>} style={{ height: '3em' }} />}
             </div>
             <div className='content has-text-centered'>
                 {countryPercentage}% ready
