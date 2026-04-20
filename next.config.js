@@ -5,17 +5,22 @@
 /** @type {import('next').NextConfig} */
 
 const { PHASE_DEVELOPMENT_SERVER } = require('next/constants')
+const withMDX = require('@next/mdx')()
 
 const prodConfig = {
     output: 'export',
     trailingSlash: true,
     images: {
         unoptimized: true
-    }
+    },
+    pageExtensions: ['ts', 'tsx', 'mdx'],
 }
 
-const devConfig = {}
+const devConfig = {
+    pageExtensions: ['ts', 'tsx', 'mdx'],
+}
 
 module.exports = (phase, { defaultConfig }) => {
-    return phase == PHASE_DEVELOPMENT_SERVER ? devConfig : prodConfig;
+    const config = phase == PHASE_DEVELOPMENT_SERVER ? devConfig : prodConfig;
+    return withMDX(config);
 }
