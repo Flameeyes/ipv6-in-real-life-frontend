@@ -49,6 +49,8 @@ function DetailsCountry(countryCode: string, categories: Map<string, Array<Entry
     var countryName: string | undefined = undefined;
     if (countryCode == "xx") {
         countryName = "Test Vector";
+    } else if (countryCode == "zz") {
+        countryName = "Global Services";
     } else {
         const [country] = lookup.countries({ alpha2: countryCode.toUpperCase() });
         countryName = country.name;
