@@ -54,7 +54,6 @@ export default function About() {
         </div>
 
         <div className="block">
-
           The reason why I&apos;m gathering services together, is because it&apos;s not
           uncommon for many services to use different hostnames and hosting
           providers between their “showroom” website and the site that includes
@@ -64,6 +63,30 @@ export default function About() {
           to show off their current account offers, which would be including
           scripts for analytics and similar, while a completely different domain
           would be used for online banking, which wouldn&apos;t be loading any of that.
+        </div>
+
+        <div className="block">
+          Being able to access a bank&apos;s website but not their online banking shouldn&apos;t
+          count as the bank having a valid IPv6 setup. Being able to see the supermarket's
+          offers but being unable to place an order shouldn&apos;t count as the supermarket
+          having a valid IPv6 setup.
+        </div>
+
+        <h2 className="title is-2">Glaring Omission: Mobile Apps</h2>
+        <div className="block">
+          Unfortunately, there is one very glaring omission from my methodology: I have no way,
+          at the time of writing at least, to confirm which hosts are required for each of the
+          companies&apos; mobile apps. And this is actually quite important.
+        </div>
+
+        <div className="block">
+          One of the common refrain I hear from those who believe IPv4 is already an entirely
+          legacy technology is that Apple has been forcing app developers to ensure their apps
+          can run on a phone that does not have an IPv4 address at all. Now, this does not mean
+          that the server side needs to be reachable without IPv4, since DNS64 and NAT64 are
+          acceptable ways to allow connectivity to IPv4 addresses from IPv6-only devices. But it
+          might very well be that companies that didn't provide an IPv6-native Web interface have
+          implemented already an IPv6-native mobile app backend.
         </div>
       </div>
     </section >
