@@ -24,7 +24,7 @@ function EntryResult(entry: Entry) {
 
     return (
         <tr key={entry.main_host.name}>
-            <td>{isReady ? "✔" : "✘"}</td>
+            <td>{isReady ? <span className="has-text-success">✔</span> : "✘"}</td>
             <td>{entry.name || entry.main_host.name}</td>
             <td></td>
         </tr>
